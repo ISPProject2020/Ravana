@@ -1,1 +1,75 @@
 This is our report on our Project.
+           ---------------------------------------------------Ravana CTF Box Report-------------------------------------------------------------
+
+***Introduction***
+We created Boot to Root CTF challenge, named 'Ravana'.It has 10 flags.And each time you will have to try new ways to boost your knowledge. Competitors have to complete most of challenges one by one in order to go to next level.We created this CTF around the characters and the secrets of Mighty Lankan King Ravana.The characters are the Vishwamuni,Kaikesi,Vibhishana,Mandhodari and the Mighty King Ravana.Every character hide some secrets,and the competitor should have to think wisely when achieving flags. Sometimes competitors must think about the powers of the characters such as Vishwamuni has the Universal power, Ravana have the power of ten people.
+
+
+***Penetration Testing Metholodgies***
+ 	#Reconnaissance
+
+		~Netdiscover
+		~Nmap
+
+	#Enumeration
+
+		~SnmpWalk
+		~Dirb
+
+	#Exploiting
+
+		~Docker Services
+		~mysqldump
+
+	#Privilege Escalation
+
+		~Final Flag can get by this method
+	
+	#Steganography
+
+	#Cryptography
+
+***Step by step***
+
+	Reconnaissance
+
+As the first step competitors should identify the host's IP with the help of "Netdiscover" tool.
+.And then competitors should run nmap scans to find the open ports and services.
+
+	-nmap -sV -p- <ip address of host>  -This is TCP service scan
+	-nmap -sU <ip address of host> -This is UDP service scan
+
+	Enumeration
+
+So as competitors found out that port 80 a.k.a http service port he or she can peek into it. At first sight it is just a webpage which contain description about King Ravana. 
+But if they use tool Dirb with the help of Dirb dictionaries, they can found out the one extension site of the webpage.
+
+                                #dirb http://<ip address of host> / /usr/share/wordlists/dirb/big.txt
+
+From there they have to downlaod the .docx file and that file contain the line,	
+                                
+                                
+                                    #*#*# All you want to do is find Vishwamuni#*#*#
+                                    
+                                                                  
+From that clue compititors have to findout how to find the Vishwamuni. So that they have to search for Vishwamuni.txt,Vishwamuni.docx,Vishwamuni.pdf etc. 
+But actually it is .jpg file.
+That picture contains some hidden text so that using the tool steghide users have to extract secret of Vishwamuni by providing the secret paraphase. After that they will find the login of Vishwamuni.
+
+                         #steghide extract -sf Vishwamuni.jpeg
+        
+But keep in mind we cant use the text file contained password because it is encrypted. 
+So that competitors must have to decode it.
+After that using that password they will be able to login to the system. In the home folder of Vishwamuni named folder for his loving wife Kaikesi.So compititors have to peek into thier and check whether what are on the folder.
+But at first nothing to display. 
+So that we have to search for hidden files. 
+                      
+                      #ls -a
+                      
+Finally the login access of Kalakesi revealed.
+
+Upto now we have completed these levels.
+Thank you.
+Next part will be soon. 
+
+             ---------------------------------------------------Ravana CTF Box Report-------------------------------------------------------------
